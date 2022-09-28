@@ -21,11 +21,15 @@ line_list = file_object.readlines()
 #Close the file object
 file_object.close()
 
+#Create empty dictionaries
+date_dict = {}
+location_dict = {}
+
 #Extract one data line into a variable
 for lineString in line_list:
 
     #Check to see if the lineString is a data line
-    if not lineString[0] in ('#','u'):
+    if lineString[0] in ('#','u'):
         continue
     
     #Split lineString into a list of items
@@ -38,5 +42,9 @@ for lineString in line_list:
     obs_lat = lineData[6]
     obs_lon = lineData[7]
     
+    #Add items to dictionaries
+    date_dict[record_id] = obs_date
+    location_dict[record_id] = (obs_lat,obs_lon)
+    
     #Print information to the user
-    print(f'Record {record_id} indicates Sara was seet and {obs_lat}N, {obs_lon}W  on {obs_date}. ')
+    #print(f'Record {record_id} indicates Sara was seet and {obs_lat}N, {obs_lon}W  on {obs_date}. ')
